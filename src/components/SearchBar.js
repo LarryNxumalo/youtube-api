@@ -6,11 +6,16 @@ class SearchBar extends React.Component {
     state = {
         searchTerm: '',
     }
+
+    handleChange = (event) =>  this.setState({ searchTerm: event.target.value })
+    // console.log(event.target.value);// this is similar to v-model together with v-on:change - listiner or watcher for chnages
+        
+    
     render() {
         return (
            <Paper elevation={6} style={{ padding: '25px' }}>
-            <form>
-                <TextField fullWidth label="Search..."></TextField>
+            <form onSubmit={this.handleSubmit}>
+                <TextField fullWidth label="Search..." onChange={this.handleChange}/>
             </form>
            </Paper>
         )
