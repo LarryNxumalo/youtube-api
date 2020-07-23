@@ -1,13 +1,8 @@
 import React from "react";
 
-// import { Grid } from "@material-ui/core";
-
 import { SearchBar, VideoDetail, VideoList } from "./components";
 
 import youtube from "./api/youtube";
-
-// import VideoDetail from "./components/VideoDetail";
-
 
 //class based components great for state management "smart components"
 class App extends React.Component {
@@ -17,19 +12,19 @@ class App extends React.Component {
     }
 
     componentDidMount(){
-        this.handleSubmit('vue');
+        this.handleSubmit('the first youtube video');
     }
-
 
     onVideoSelect = (video) => {
         this.setState({ selectedVideo: video });
     }
+
     handleSubmit = async (searchTerm) => { // stop execution of code before fetched
         const response = await youtube.get('search', {
             params: {
                 part: 'snippet',
                 maxResults: 8,
-                key:'AIzaSyC9KXhrivmSr6GRJror-8sfP7HIbkeoO2M',
+                key:'AIzaSyAhjum8VLlrug3bU3TfsKFAs1SRMJ-DgOs',
                 q: searchTerm,
              }
             });
