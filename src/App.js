@@ -1,10 +1,11 @@
 import React from "react";
 
-import { Grid } from "@material-ui/core";
+// import { Grid } from "@material-ui/core";
 
 import { SearchBar, VideoDetail, VideoList } from "./components";
 
 import youtube from "./api/youtube";
+
 // import VideoDetail from "./components/VideoDetail";
 
 
@@ -16,7 +17,7 @@ class App extends React.Component {
     }
 
     componentDidMount(){
-        this.handleSubmit('pdf generation with node');
+        this.handleSubmit('vue');
     }
 
 
@@ -27,8 +28,8 @@ class App extends React.Component {
         const response = await youtube.get('search', {
             params: {
                 part: 'snippet',
-                maxResults: 5,
-                key:'AIzaSyCYHumF1q3Z9J66sS-uUHCPVQUe005v4qQ',
+                maxResults: 8,
+                key:'AIzaSyC9KXhrivmSr6GRJror-8sfP7HIbkeoO2M',
                 q: searchTerm,
              }
             });
@@ -40,22 +41,21 @@ class App extends React.Component {
     render (){
         const { selectedVideo, videos } = this.state; //destructuring this.state.selcectedVideo used in Video detail
         return  (
-            <Grid justify="center" container spacing={10}>
-                <Grid item xs={12}>
-                    <Grid container spacing={10}>
-                        <Grid item xs={12}>
+            <main class="page">
+                <div class="main-wrapper">
+                        <div class="search-wrap">
                             <SearchBar onFormSubmit={this.handleSubmit}/>
-                        </Grid>
-                        <Grid item xs={8}>
+                        </div>
+                    <div class="content">
+                        <div class="video-detail-wrap">
                             <VideoDetail video={ selectedVideo } />
-                        </Grid>
-                        <Grid item xs={4}>
+                        </div>
+                        <div class="video-list-wrap">
                             <VideoList  videos={ videos } onVideoSelect={ this.onVideoSelect }/>
-                        </Grid>
-                    </Grid>
-
-                </Grid>
-            </Grid>
+                        </div>
+                    </div>
+                </div>
+            </main>
         )
     }
 }
