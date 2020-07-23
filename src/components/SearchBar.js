@@ -1,7 +1,5 @@
 import React from "react";
 
-import { Paper, TextField} from '@material-ui/core';
-
 class SearchBar extends React.Component {
     state = {
         searchTerm: '',
@@ -11,7 +9,7 @@ class SearchBar extends React.Component {
     // console.log(event.target.value);// this is similar to v-model together with v-on:change - listiner or watcher for chnages
     handleSubmit = (event) => {
         const { searchTerm } = this.state; // distructuring instead of using this.state.searchTerm
-        const { onFormSubmit } = this.props; //props
+        const { onFormSubmit } = this.props; //props this.props.onFormSubmit
 
         onFormSubmit(searchTerm);
 
@@ -20,11 +18,9 @@ class SearchBar extends React.Component {
 
     render() {
         return (
-           <Paper elevation={6} style={{ padding: '25px' }}>
             <form onSubmit={this.handleSubmit}>
-                <TextField fullWidth label="Search..." onChange={this.handleChange}/>
+                <input placeholder="search..." onChange={this.handleChange}/>
             </form>
-           </Paper>
         )
     }
 }
