@@ -1,4 +1,4 @@
-This project was created using React
+This project was built using React
 
 ## Available Scripts
 
